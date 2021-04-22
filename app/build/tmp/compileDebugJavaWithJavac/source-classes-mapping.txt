@@ -1,0 +1,10 @@
+com/emperor/kotlinexample/BuildConfig.java
+ com.emperor.kotlinexample.BuildConfig
+com/emperor/kotlinexample/room/LocalDatabase_Impl.java
+ com.emperor.kotlinexample.room.LocalDatabase_Impl
+ com.emperor.kotlinexample.room.LocalDatabase_Impl$1
+com/emperor/kotlinexample/room/dao/UserDao_Impl.java
+ com.emperor.kotlinexample.room.dao.UserDao_Impl
+ com.emperor.kotlinexample.room.dao.UserDao_Impl$1
+ com.emperor.kotlinexample.room.dao.UserDao_Impl$2
+ com.emperor.kotlinexample.room.dao.UserDao_Impl$3
