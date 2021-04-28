@@ -1,15 +1,23 @@
 package com.emperor.kotlinexample.view
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.emperor.kotlinexample.R
+import com.emperor.kotlinexample.api.ApiService
+import com.emperor.kotlinexample.api.Retroclient
+import com.emperor.kotlinexample.model.FriendListModel
 import com.emperor.kotlinexample.model.UserModel
-import com.emperor.kotlinexample.viewmodel.UserViewModel
+import com.emperor.kotlinexample.utils.Status
+import com.emperor.kotlinexample.viewmodel.friendlist.FriendListViewModel
+import com.emperor.kotlinexample.viewmodel.friendlist.factorymodel.FriendsFactoryModel
+import com.emperor.kotlinexample.viewmodel.user.UserViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.coroutines.*
 import kotlin.contracts.contract
 
 private const val TAG = "MainActivity"
@@ -45,18 +53,18 @@ class MainActivity : AppCompatActivity() {
             val name = txtUsername.text.toString().trim()
             if(name.isEmpty())
             {
-                txtUsername.error= "Enter name"
-                return@setOnClickListener
+//                txtUsername.error= "Enter name"
+//                return@setOnClickListener
+                startActivity(Intent(this, FriendsActivity::class.java))
             }
-
 
             userViewModel.getUserLiveData(this, name)!!.observe(this, Observer {
                 if (it == null) {
                     lblReadResponse.text = "Data Not Found"
                     lblUseraname.text = "- - -"
                     lblPassword.text = "- - -"
-                }
-                else {
+                } else {
+                    Log.d(TAG, "onCreate: $it")
                     lblUseraname.text = it.name
                     lblPassword.text = it.age.toString()
 
@@ -64,10 +72,89 @@ class MainActivity : AppCompatActivity() {
                 }
             })
 
+        }
+//        coroutineMethod()
 
+        
+        inlineFunction({normalFun(1)}, { normalFun(2)}) // second function is not calling
+        higherFun("Hello", ::print)
+        coroutines()
+    }
+
+    private fun higherFun(str:String, myCustFun:(String) -> Unit)
+    {
+        myCustFun(str)
+    }
+
+    public inline fun printStr(str: Any?): Unit
+    {
+
+    }
+
+    private fun normalFun(int: Int)
+    {
+        Log.d(TAG, "normalFun: $int")
+    }
+
+    private inline fun inlineFunction(myFun: () -> Unit, mySecFun: () -> Unit)
+    {
+        myFun()
+        
+    }
+
+    private fun coroutines() {
+
+//        launch {
+//            delay(8000L)
+//            Log.d(TAG, "coroutines:launch ")
+//        }
+//        coroutineScope {
+//            delay(10000L)
+//            Log.d(TAG, "coroutinesScope: ")
+//        }
+
+        CoroutineScope(Dispatchers.IO).launch {
+            suspendCoroutine()
         }
 
+//        GlobalScope.launch {
+//            delay(10000L)
+//            Log.d(TAG, "coroutinesScope: GlobalScope")
+//
+//            coroutineScope {
+//                delay(10000L)
+//                Log.d(TAG, "coroutinesScope: Nested")
+////                lblUseraname.text = "it.name"
+//            }
+//        }
 
+        Log.d(TAG, "coroutines: ")
+    }
+
+    private suspend fun suspendCoroutine()
+    {
+        lblUseraname.text = "it.name"
+    }
+
+    private fun coroutineMethod()
+    {
+            GlobalScope.launch {  // launch new coroutine in background and continue
+                delay(1000L) // non-blocking delay for 1 second (default time unit is ms)
+                Log.d(TAG, "coroutineMethod: World!") // print after delay
+                val sum1 = async { // non blocking sum1
+                    delay(100L)
+                    2 + 2
+                }
+                val sum2 = async { // non blocking sum2
+                    delay(500L)
+                    3 + 3
+                }
+                Log.d(TAG, "coroutineMethod: waiting concurrent sums")
+                val total = sum1.await() + sum2.await() // execution stops until both sums are calculated
+                Log.d(TAG, "coroutineMethod: Total is: $total")
+            }
+        Log.d(TAG, "coroutineMethod: Hello,")     // main thread continues while coroutine executes
+            Thread.sleep(2000L)   // block main thread for 2 seconds to keep JVM alive
     }
 
     private fun scopeFunctions()

@@ -20,8 +20,16 @@
         "source": "C:\\Android\\KotlinExample\\app\\src\\main\\res\\mipmap-xxxhdpi\\ic_launcher.png"
     },
     {
+        "merged": "C:\\Android\\KotlinExample\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_friends.xml.flat",
+        "source": "C:\\Android\\KotlinExample\\app\\src\\main\\res\\layout\\activity_friends.xml"
+    },
+    {
         "merged": "C:\\Android\\KotlinExample\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-xxhdpi_ic_launcher.png.flat",
         "source": "C:\\Android\\KotlinExample\\app\\src\\main\\res\\mipmap-xxhdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "C:\\Android\\KotlinExample\\app\\build\\intermediates\\res\\merged\\debug\\layout_activity_deep_linking.xml.flat",
+        "source": "C:\\Android\\KotlinExample\\app\\src\\main\\res\\layout\\activity_deep_linking.xml"
     },
     {
         "merged": "C:\\Android\\KotlinExample\\app\\build\\intermediates\\res\\merged\\debug\\drawable_ic_launcher_background.xml.flat",
@@ -46,6 +54,10 @@
     {
         "merged": "C:\\Android\\KotlinExample\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-anydpi-v26_ic_launcher_round.xml.flat",
         "source": "C:\\Android\\KotlinExample\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
+    },
+    {
+        "merged": "C:\\Android\\KotlinExample\\app\\build\\intermediates\\res\\merged\\debug\\layout_friends_adapter.xml.flat",
+        "source": "C:\\Android\\KotlinExample\\app\\src\\main\\res\\layout\\friends_adapter.xml"
     },
     {
         "merged": "C:\\Android\\KotlinExample\\app\\build\\intermediates\\res\\merged\\debug\\drawable-anydpi-v24_ic_launcher_foreground.xml.flat",

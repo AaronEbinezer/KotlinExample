@@ -14,6 +14,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 import androidx.sqlite.db.SupportSQLiteOpenHelper.Callback;
 import androidx.sqlite.db.SupportSQLiteOpenHelper.Configuration;
+import com.emperor.kotlinexample.room.dao.FriendsDao;
+import com.emperor.kotlinexample.room.dao.FriendsDao_Impl;
 import com.emperor.kotlinexample.room.dao.UserDao;
 import com.emperor.kotlinexample.room.dao.UserDao_Impl;
 import java.lang.Override;
@@ -27,19 +29,23 @@ import java.util.Set;
 public final class LocalDatabase_Impl extends LocalDatabase {
   private volatile UserDao _userDao;
 
+  private volatile FriendsDao _friendsDao;
+
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `User` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `age` INTEGER NOT NULL)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `FriendList` (`image` TEXT NOT NULL, `email` TEXT NOT NULL, `id` TEXT NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY(`id`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '4736f8f5a3689376122e3bfb71a8fb0d')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6ad2ef4163a643bc19bf7fa2359c5f3a')");
       }
 
       @Override
       public void dropAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("DROP TABLE IF EXISTS `User`");
+        _db.execSQL("DROP TABLE IF EXISTS `FriendList`");
         if (mCallbacks != null) {
           for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
             mCallbacks.get(_i).onDestructiveMigration(_db);
@@ -91,9 +97,23 @@ public final class LocalDatabase_Impl extends LocalDatabase {
                   + " Expected:\n" + _infoUser + "\n"
                   + " Found:\n" + _existingUser);
         }
+        final HashMap<String, TableInfo.Column> _columnsFriendList = new HashMap<String, TableInfo.Column>(4);
+        _columnsFriendList.put("image", new TableInfo.Column("image", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFriendList.put("email", new TableInfo.Column("email", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFriendList.put("id", new TableInfo.Column("id", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsFriendList.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysFriendList = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesFriendList = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoFriendList = new TableInfo("FriendList", _columnsFriendList, _foreignKeysFriendList, _indicesFriendList);
+        final TableInfo _existingFriendList = TableInfo.read(_db, "FriendList");
+        if (! _infoFriendList.equals(_existingFriendList)) {
+          return new RoomOpenHelper.ValidationResult(false, "FriendList(com.emperor.kotlinexample.model.FriendListModel).\n"
+                  + " Expected:\n" + _infoFriendList + "\n"
+                  + " Found:\n" + _existingFriendList);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "4736f8f5a3689376122e3bfb71a8fb0d", "b04ab7ab5ae5e94240ec7184e6f121e4");
+    }, "6ad2ef4163a643bc19bf7fa2359c5f3a", "06b573a737d634c32daebe8ceb061d3a");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -106,7 +126,7 @@ public final class LocalDatabase_Impl extends LocalDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "User");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "User","FriendList");
   }
 
   @Override
@@ -116,6 +136,7 @@ public final class LocalDatabase_Impl extends LocalDatabase {
     try {
       super.beginTransaction();
       _db.execSQL("DELETE FROM `User`");
+      _db.execSQL("DELETE FROM `FriendList`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -136,6 +157,20 @@ public final class LocalDatabase_Impl extends LocalDatabase {
           _userDao = new UserDao_Impl(this);
         }
         return _userDao;
+      }
+    }
+  }
+
+  @Override
+  public FriendsDao friendsDao() {
+    if (_friendsDao != null) {
+      return _friendsDao;
+    } else {
+      synchronized(this) {
+        if(_friendsDao == null) {
+          _friendsDao = new FriendsDao_Impl(this);
+        }
+        return _friendsDao;
       }
     }
   }

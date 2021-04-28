@@ -1,10 +1,37 @@
-com/emperor/kotlinexample/BuildConfig.java
- com.emperor.kotlinexample.BuildConfig
+com/emperor/kotlinexample/databinding/FriendsAdapterBinding.java
+ com.emperor.kotlinexample.databinding.FriendsAdapterBinding
+androidx/databinding/DataBinderMapperImpl.java
+ androidx.databinding.DataBinderMapperImpl
 com/emperor/kotlinexample/room/LocalDatabase_Impl.java
  com.emperor.kotlinexample.room.LocalDatabase_Impl
  com.emperor.kotlinexample.room.LocalDatabase_Impl$1
+com/emperor/kotlinexample/DataBinderMapperImpl.java
+ com.emperor.kotlinexample.DataBinderMapperImpl
+ com.emperor.kotlinexample.DataBinderMapperImpl$InnerBrLookup
+ com.emperor.kotlinexample.DataBinderMapperImpl$InnerLayoutIdLookup
+com/emperor/kotlinexample/BR.java
+ com.emperor.kotlinexample.BR
+com/emperor/kotlinexample/databinding/ActivityDeepLinkingBinding.java
+ com.emperor.kotlinexample.databinding.ActivityDeepLinkingBinding
+androidx/databinding/library/baseAdapters/BR.java
+ androidx.databinding.library.baseAdapters.BR
 com/emperor/kotlinexample/room/dao/UserDao_Impl.java
  com.emperor.kotlinexample.room.dao.UserDao_Impl
  com.emperor.kotlinexample.room.dao.UserDao_Impl$1
  com.emperor.kotlinexample.room.dao.UserDao_Impl$2
  com.emperor.kotlinexample.room.dao.UserDao_Impl$3
+com/emperor/kotlinexample/DataBindingTriggerClass.java
+ com.emperor.kotlinexample.DataBindingTriggerClass
+com/emperor/kotlinexample/databinding/ActivityMainBinding.java
+ com.emperor.kotlinexample.databinding.ActivityMainBinding
+com/emperor/kotlinexample/BuildConfig.java
+ com.emperor.kotlinexample.BuildConfig
+com/emperor/kotlinexample/databinding/FriendsAdapterBindingImpl.java
+ com.emperor.kotlinexample.databinding.FriendsAdapterBindingImpl
+com/emperor/kotlinexample/databinding/ActivityFriendsBinding.java
+ com.emperor.kotlinexample.databinding.ActivityFriendsBinding
+androidx/databinding/DataBindingComponent.java
+ androidx.databinding.DataBindingComponent
+com/emperor/kotlinexample/room/dao/FriendsDao_Impl.java
+ com.emperor.kotlinexample.room.dao.FriendsDao_Impl
+ com.emperor.kotlinexample.room.dao.FriendsDao_Impl$1

@@ -2,13 +2,16 @@ package com.emperor.kotlinexample.room
 
 import android.content.Context
 import androidx.room.*
+import com.emperor.kotlinexample.model.FriendListModel
 import com.emperor.kotlinexample.model.UserModel
+import com.emperor.kotlinexample.room.dao.FriendsDao
 import com.emperor.kotlinexample.room.dao.UserDao
 
-@Database(entities = arrayOf(UserModel::class), version = 1, exportSchema = false)
+@Database(entities =[UserModel::class, FriendListModel::class], version = 2, exportSchema = false)
 abstract class LocalDatabase : RoomDatabase() {
 
     abstract fun userDao(): UserDao
+    abstract fun friendsDao(): FriendsDao
 
     companion object
     {

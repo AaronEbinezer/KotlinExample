@@ -4,9 +4,8 @@ import android.content.Context
 import androidx.lifecycle.LiveData
 import com.emperor.kotlinexample.model.UserModel
 import com.emperor.kotlinexample.room.LocalDatabase
-import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.*
 import kotlinx.coroutines.Dispatchers.IO
-import kotlinx.coroutines.launch
 
 class UserRepo {
 
@@ -23,19 +22,38 @@ class UserRepo {
         public fun insertUser(context: Context, userModel: UserModel)
         {
             userDatabase = initializeDb(context)
-
             CoroutineScope(IO).launch {
-                userDatabase!!.userDao().InsertUser(userModel)
+//                userDatabase!!.userDao().InsertUser(userModel)
+                launch {
+                    insertUserScope(userModel)
+                }
             }
         }
 
-        public fun getUser(context: Context, name: String): LiveData<UserModel>? {
-            userDatabase = initializeDb(context)
-//            CoroutineScope(IO).launch {
-               userDetails = userDatabase!!.userDao().getUserList(name)
-//            }
+        private suspend fun insertUserScope(userModel: UserModel)
+        {
+            userDatabase!!.userDao().InsertUser(userModel)
+        }
 
-            return userDetails
+        public fun getUser(context: Context, name: String): LiveData<UserModel>? = runBlocking{
+            userDatabase = initializeDb(context)
+
+            coroutineScope {
+                //Since coroutineScope is used all the launch block will be executed and then only bottom block will be executed
+//                delay(10000L) // Freezes the UI for 10 sec
+                launch {
+                    userDetails = userDatabase!!.userDao().getUserList(name) as LiveData<UserModel>
+                }
+
+            }
+            userDetails
+
+//            val job = GlobalScope.launch {
+//                delay(10000L) // Freezes the UI for 10 sec
+//                userDetails = userDatabase!!.userDao().getUserList(name) as LiveData<UserModel>
+//            }
+//            job.join()
+//            userDetails
         }
 
     }

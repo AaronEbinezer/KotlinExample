@@ -5,6 +5,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import com.emperor.kotlinexample.model.FriendListModel
 import com.emperor.kotlinexample.model.UserModel
 
 @Dao
