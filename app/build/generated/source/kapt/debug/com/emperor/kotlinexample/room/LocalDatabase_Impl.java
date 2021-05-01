@@ -36,10 +36,10 @@ public final class LocalDatabase_Impl extends LocalDatabase {
     final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
-        _db.execSQL("CREATE TABLE IF NOT EXISTS `User` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `name` TEXT NOT NULL, `age` INTEGER NOT NULL)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `User` (`id` INTEGER PRIMARY KEY AUTOINCREMENT, `password` TEXT, `name` TEXT NOT NULL, `age` INTEGER NOT NULL)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `FriendList` (`image` TEXT NOT NULL, `email` TEXT NOT NULL, `id` TEXT NOT NULL, `name` TEXT NOT NULL, PRIMARY KEY(`id`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '6ad2ef4163a643bc19bf7fa2359c5f3a')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'e9a3f32f60f3272addad99763441eca2')");
       }
 
       @Override
@@ -84,8 +84,9 @@ public final class LocalDatabase_Impl extends LocalDatabase {
 
       @Override
       protected RoomOpenHelper.ValidationResult onValidateSchema(SupportSQLiteDatabase _db) {
-        final HashMap<String, TableInfo.Column> _columnsUser = new HashMap<String, TableInfo.Column>(3);
+        final HashMap<String, TableInfo.Column> _columnsUser = new HashMap<String, TableInfo.Column>(4);
         _columnsUser.put("id", new TableInfo.Column("id", "INTEGER", false, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsUser.put("password", new TableInfo.Column("password", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUser.put("name", new TableInfo.Column("name", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         _columnsUser.put("age", new TableInfo.Column("age", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
         final HashSet<TableInfo.ForeignKey> _foreignKeysUser = new HashSet<TableInfo.ForeignKey>(0);
@@ -113,7 +114,7 @@ public final class LocalDatabase_Impl extends LocalDatabase {
         }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "6ad2ef4163a643bc19bf7fa2359c5f3a", "06b573a737d634c32daebe8ceb061d3a");
+    }, "e9a3f32f60f3272addad99763441eca2", "4f73f7c1c01e127e53cf6af5c77294ec");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)

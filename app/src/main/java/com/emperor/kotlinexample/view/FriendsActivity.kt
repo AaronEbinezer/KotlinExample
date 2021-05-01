@@ -27,7 +27,8 @@ class FriendsActivity : AppCompatActivity() {
         setContentView(activityFriendsBinding!!.root)
 
         setupViewModel()
-        setupObserver()
+//        setupOnLineObserver()
+        setupLocalObserver()
         friendListAdapter()
     }
 
@@ -38,7 +39,29 @@ class FriendsActivity : AppCompatActivity() {
         ).get(FriendListViewModel::class.java)
     }
 
-    private fun setupObserver()
+    private fun setupLocalObserver()
+    {
+        friendListViewModel.getFriendLocalList().observe(this, {
+            it.let { res ->
+                when (res.status) {
+                    Status.SUCCESS -> {
+                        res.data?.let {
+                            friends ->
+                            activityFriendsBinding?.progress?.visibility = View.GONE
+                            setFriendList(friends as List<FriendListModel>)}
+                    }
+                    Status.ERROR -> {
+                        Log.d(TAG, "setupObserver: Error ${res.message}")
+                    }
+                    Status.LOADING -> {
+                        activityFriendsBinding?.progress?.visibility = View.VISIBLE
+                    }
+                }
+            }
+        })
+    }
+
+    private fun setupOnLineObserver()
     {
         friendListViewModel.getFriendList().observe(this, Observer {
             it.let { res ->

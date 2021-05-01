@@ -4,9 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
+import androidx.lifecycle.*
 import com.emperor.kotlinexample.R
 import com.emperor.kotlinexample.api.ApiService
 import com.emperor.kotlinexample.api.Retroclient
@@ -18,6 +16,7 @@ import com.emperor.kotlinexample.viewmodel.friendlist.factorymodel.FriendsFactor
 import com.emperor.kotlinexample.viewmodel.user.UserViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.coroutines.*
+import java.lang.Exception
 import kotlin.contracts.contract
 
 private const val TAG = "MainActivity"
@@ -58,15 +57,33 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, FriendsActivity::class.java))
             }
 
-            userViewModel.getUserLiveData(this, name)!!.observe(this, Observer {
+            userViewModel.getNormalData(this, name)!!.observe(this, Observer {
                 if (it == null) {
                     lblReadResponse.text = "Data Not Found"
                     lblUseraname.text = "- - -"
                     lblPassword.text = "- - -"
                 } else {
-                    Log.d(TAG, "onCreate: $it")
-                    lblUseraname.text = it.name
-                    lblPassword.text = it.age.toString()
+//                    Log.d(TAG, "onCreate: ${it.name}")
+//                    lblUseraname.text = it.name
+//                    lblPassword.text = it.age.toString()
+                    when (it.status) {
+                        Status.SUCCESS -> {
+                            try {
+                                val data = it.data as LiveData<UserModel>
+                                lblUseraname.text = data?.value?.name
+                                lblPassword.text = data?.value?.age.toString()
+                            } catch (e: Exception) {
+                                Log.d(TAG, "onCreate: $e")
+                            }
+                        }
+                        Status.ERROR -> {
+                            Log.d(TAG, "onCreate: error")
+                        }
+                        Status.LOADING -> {
+                            Log.d(TAG, "onCreate: loading")
+                        }
+                    }
+
 
                     lblReadResponse.text = "Data Found Successfully"
                 }

@@ -31,7 +31,7 @@ public final class UserDao_Impl implements UserDao {
     this.__insertionAdapterOfUserModel = new EntityInsertionAdapter<UserModel>(__db) {
       @Override
       public String createQuery() {
-        return "INSERT OR REPLACE INTO `User` (`id`,`name`,`age`) VALUES (?,?,?)";
+        return "INSERT OR REPLACE INTO `User` (`id`,`password`,`name`,`age`) VALUES (?,?,?,?)";
       }
 
       @Override
@@ -41,12 +41,17 @@ public final class UserDao_Impl implements UserDao {
         } else {
           stmt.bindLong(1, value.getId());
         }
-        if (value.getName() == null) {
+        if (value.getPassword() == null) {
           stmt.bindNull(2);
         } else {
-          stmt.bindString(2, value.getName());
+          stmt.bindString(2, value.getPassword());
         }
-        stmt.bindLong(3, value.getAge());
+        if (value.getName() == null) {
+          stmt.bindNull(3);
+        } else {
+          stmt.bindString(3, value.getName());
+        }
+        stmt.bindLong(4, value.getAge());
       }
     };
   }
@@ -84,6 +89,7 @@ public final class UserDao_Impl implements UserDao {
         final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
         try {
           final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfPassword = CursorUtil.getColumnIndexOrThrow(_cursor, "password");
           final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
           final int _cursorIndexOfAge = CursorUtil.getColumnIndexOrThrow(_cursor, "age");
           final UserModel _result;
@@ -100,6 +106,9 @@ public final class UserDao_Impl implements UserDao {
               _tmpId = _cursor.getInt(_cursorIndexOfId);
             }
             _result.setId(_tmpId);
+            final String _tmpPassword;
+            _tmpPassword = _cursor.getString(_cursorIndexOfPassword);
+            _result.setPassword(_tmpPassword);
           } else {
             _result = null;
           }
@@ -114,5 +123,53 @@ public final class UserDao_Impl implements UserDao {
         _statement.release();
       }
     });
+  }
+
+  @Override
+  public Object getNormalUserList(final String userName, final Continuation<? super UserModel> p1) {
+    final String _sql = "Select * from User where name = ? order by id desc";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);
+    int _argIndex = 1;
+    if (userName == null) {
+      _statement.bindNull(_argIndex);
+    } else {
+      _statement.bindString(_argIndex, userName);
+    }
+    return CoroutinesRoom.execute(__db, false, new Callable<UserModel>() {
+      @Override
+      public UserModel call() throws Exception {
+        final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+        try {
+          final int _cursorIndexOfId = CursorUtil.getColumnIndexOrThrow(_cursor, "id");
+          final int _cursorIndexOfPassword = CursorUtil.getColumnIndexOrThrow(_cursor, "password");
+          final int _cursorIndexOfName = CursorUtil.getColumnIndexOrThrow(_cursor, "name");
+          final int _cursorIndexOfAge = CursorUtil.getColumnIndexOrThrow(_cursor, "age");
+          final UserModel _result;
+          if(_cursor.moveToFirst()) {
+            final String _tmpName;
+            _tmpName = _cursor.getString(_cursorIndexOfName);
+            final int _tmpAge;
+            _tmpAge = _cursor.getInt(_cursorIndexOfAge);
+            _result = new UserModel(_tmpName,_tmpAge);
+            final Integer _tmpId;
+            if (_cursor.isNull(_cursorIndexOfId)) {
+              _tmpId = null;
+            } else {
+              _tmpId = _cursor.getInt(_cursorIndexOfId);
+            }
+            _result.setId(_tmpId);
+            final String _tmpPassword;
+            _tmpPassword = _cursor.getString(_cursorIndexOfPassword);
+            _result.setPassword(_tmpPassword);
+          } else {
+            _result = null;
+          }
+          return _result;
+        } finally {
+          _cursor.close();
+          _statement.release();
+        }
+      }
+    }, p1);
   }
 }

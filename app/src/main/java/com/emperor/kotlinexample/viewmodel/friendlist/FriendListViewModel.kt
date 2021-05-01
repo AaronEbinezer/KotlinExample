@@ -22,4 +22,14 @@ class FriendListViewModel(private val friendListRepo: FriendListRepo): ViewModel
             }
     }
 
+    fun getFriendLocalList() = liveData(Dispatchers.IO) {
+        emit(Resource.loading(data = null))
+        try {
+            val data = friendListRepo.getFriendData()
+            emit(Resource.success(data = data))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
 }

@@ -17,4 +17,7 @@ interface UserDao {
     @Query("Select * from User where name = :userName order by id desc")
     fun getUserList(userName:String): LiveData<UserModel>
 
+    @Query("Select * from User where name = :userName order by id desc")
+    suspend fun getNormalUserList(userName:String): UserModel
+
 }

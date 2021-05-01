@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-37:12
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-41:12
 MERGED from [androidx.databinding:databinding-adapters:4.1.2] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\f99e2ee58cb1e62c3157e3b0caa32b9a\databinding-adapters-4.1.2\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:databinding-runtime:4.1.2] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\37064e1fd2162d48db2ec2fe111a641b\databinding-runtime-4.1.2\AndroidManifest.xml:17:1-24:12
 MERGED from [androidx.databinding:viewbinding:4.1.2] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\fc448e5ee20ce795af9eb88f207aaebe\jetified-viewbinding-4.1.2\AndroidManifest.xml:17:1-22:12
@@ -55,20 +55,20 @@ MERGED from [androidx.documentfile:documentfile:1.0.0] C:\Users\admin\.gradle\ca
 MERGED from [androidx.localbroadcastmanager:localbroadcastmanager:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\8689f2da0688900b5c61388180c1c3cd\localbroadcastmanager-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.print:print:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\84c98cb070dd75a88e229c1f9ebb7b22\print-1.0.0\AndroidManifest.xml:17:1-22:12
 MERGED from [androidx.annotation:annotation-experimental:1.0.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\65fa869a3d2398e881633f29543be79b\jetified-annotation-experimental-1.0.0\AndroidManifest.xml:17:1-24:12
-INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-37:12
-INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-37:12
+INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-41:12
+INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-41:12
 	package
 		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:3:5-40
 		INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-37:12
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-41:12
 		INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml
 	android:versionCode
 		INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-37:12
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:1-41:12
 		INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:2:11-69
@@ -77,7 +77,7 @@ ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:5:5-67
 	android:name
 		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:5:22-64
 application
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:7:5-35:19
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:7:5-39:19
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\1e35180f46140cb6767ab7b7fd708bff\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [com.google.android.material:material:1.3.0] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\1e35180f46140cb6767ab7b7fd708bff\material-1.3.0\AndroidManifest.xml:22:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.0.4] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\31ac098d93a2a0ddf2e84d89031f5da7\constraintlayout-2.0.4\AndroidManifest.xml:9:5-20
@@ -99,61 +99,75 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.0] C:\Users\ad
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.3.2] C:\Users\admin\.gradle\caches\transforms-2\files-2.1\0288a8aab631773614f54c3f4d4ca2e2\core-1.3.2\AndroidManifest.xml:24:18-86
 	android:supportsRtl
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:12:9-35
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:13:9-35
 	android:label
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:10:9-41
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:11:9-41
 	android:roundIcon
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:11:9-54
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:12:9-54
 	android:icon
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:9:9-43
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:10:9-43
 	android:allowBackup
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:8:9-35
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:9:9-35
 	android:theme
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:13:9-51
-activity#com.emperor.kotlinexample.view.FriendsActivity
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:14:9-67
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:14:9-51
 	android:name
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:14:19-55
-activity#com.emperor.kotlinexample.view.DeepLinkingActivity
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:15:9-27:20
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:8:9-46
+activity#com.emperor.kotlinexample.view.RegisterActivity
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:15:9-68
 	android:name
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:15:19-59
-intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:trovecrm.in+data:pathPrefix:/user+data:scheme:https
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:16:13-26:29
-action#android.intent.action.VIEW
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:17:17-69
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:15:19-56
+activity#com.emperor.kotlinexample.view.LoginActivity
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:16:9-56
 	android:name
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:17:25-66
-category#android.intent.category.DEFAULT
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:19:17-76
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:16:19-53
+activity#com.emperor.kotlinexample.view.SplashActivity
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:17:9-23:20
 	android:name
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:19:27-73
-category#android.intent.category.BROWSABLE
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:20:17-78
-	android:name
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:20:27-75
-data
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:22:17-25:46
-	android:host
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:23:21-47
-	android:scheme
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:25:21-43
-	android:pathPrefix
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:24:21-47
-activity#com.emperor.kotlinexample.view.MainActivity
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:28:9-34:20
-	android:name
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:28:19-52
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:17:19-54
 intent-filter#action:name:android.intent.action.MAIN+category:name:android.intent.category.LAUNCHER
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:29:13-33:29
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:18:13-22:29
 action#android.intent.action.MAIN
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:30:17-69
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:19:17-69
 	android:name
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:30:25-66
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:19:25-66
 category#android.intent.category.LAUNCHER
-ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:32:17-77
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:21:17-77
 	android:name
-		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:32:27-74
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:21:27-74
+activity#com.emperor.kotlinexample.view.FriendsActivity
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:24:9-58
+	android:name
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:24:19-55
+activity#com.emperor.kotlinexample.view.DeepLinkingActivity
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:25:9-37:20
+	android:name
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:25:19-59
+intent-filter#action:name:android.intent.action.VIEW+category:name:android.intent.category.BROWSABLE+category:name:android.intent.category.DEFAULT+data:host:trovecrm.in+data:pathPrefix:/user+data:scheme:https
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:26:13-36:29
+action#android.intent.action.VIEW
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:27:17-69
+	android:name
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:27:25-66
+category#android.intent.category.DEFAULT
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:29:17-76
+	android:name
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:29:27-73
+category#android.intent.category.BROWSABLE
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:30:17-78
+	android:name
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:30:27-75
+data
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:32:17-35:46
+	android:host
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:33:21-47
+	android:scheme
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:35:21-43
+	android:pathPrefix
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:34:21-47
+activity#com.emperor.kotlinexample.view.MainActivity
+ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:38:9-55
+	android:name
+		ADDED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml:38:19-52
 uses-sdk
 INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Android\KotlinExample\app\src\main\AndroidManifest.xml

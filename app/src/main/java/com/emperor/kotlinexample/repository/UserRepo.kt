@@ -30,23 +30,28 @@ class UserRepo {
             }
         }
 
+        public suspend fun getUserData(context: Context, name: String): UserModel {
+            userDatabase = initializeDb(context)
+            return userDatabase!!.userDao().getNormalUserList(name)
+        }
+
         private suspend fun insertUserScope(userModel: UserModel)
         {
             userDatabase!!.userDao().InsertUser(userModel)
         }
 
-        public fun getUser(context: Context, name: String): LiveData<UserModel>? = runBlocking{
+        public fun getUser(context: Context, name: String): LiveData<UserModel>?{
             userDatabase = initializeDb(context)
-
-            coroutineScope {
-                //Since coroutineScope is used all the launch block will be executed and then only bottom block will be executed
-//                delay(10000L) // Freezes the UI for 10 sec
-                launch {
-                    userDetails = userDatabase!!.userDao().getUserList(name) as LiveData<UserModel>
-                }
-
-            }
-            userDetails
+            userDetails = userDatabase!!.userDao().getUserList(name)
+//            coroutineScope {
+//                //Since coroutineScope is used all the launch block will be executed and then only bottom block will be executed
+////                delay(10000L) // Freezes the UI for 10 sec
+//                launch {
+//                    userDetails = userDatabase!!.userDao().getUserList(name) as LiveData<UserModel>
+//                }
+//
+//            }
+            return userDetails
 
 //            val job = GlobalScope.launch {
 //                delay(10000L) // Freezes the UI for 10 sec
